@@ -75,11 +75,13 @@ module Jekyll
 
               # Create the output file path
               outfile_filename = if @config['append_ext']
+
                 File.basename(imgfile) + '.webp'
               else
                 file_noext = File.basename(imgfile, file_ext)
                 file_noext + ".webp"
               end
+              Jekyll.logger.info 'Generating:' + outfile_filename
               FileUtils::mkdir_p(imgdir_destination + imgfile_relative_path)
               outfile_fullpath_webp = File.join(imgdir_destination + imgfile_relative_path, outfile_filename)
 
